@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gunjan Kumar | Senior Data Engineer</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #003366;
+            --accent-color: #ff9900;
+            --light-color: #f5f5f5;
+            --dark-color: #333333;
+            --text-color: #444444;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Layout */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent-color);
+            margin-bottom: 1rem;
+            background-color: #e1e1e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--secondary-color);
+        }
+        
+        .header-title {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header-subtitle {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .nav-links li {
+            margin: 0 1rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .nav-links a:hover {
+            border-bottom: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            padding: 1rem;
+            background-color: var(--light-color);
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .skills-category {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .skills-list {
+            list-style: none;
+        }
+        
+        .skills-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .skills-list li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--light-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--light-color);
+            border: 4px solid var(--accent-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--light-color);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+        
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--light-color);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+        
+        .right::after {
+            left: -16px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-date {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .timeline-title {
+            margin: 0.5rem 0;
+        }
+        
+        .timeline-company {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .project-client {
+            font-style: italic;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .project-tech {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tech-tag {
+            background-color: var(--light-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+        }
+        
+        /* Certifications */
+        .certifications-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .certification-item {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-form {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .contact-list {
+            list-style: none;
+        }
+        
+        .contact-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: var(--font-main);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--accent-color);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::before {
+                left: 60px;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+        
+            .left::after, .right::after {
+                left: 15px;
+            }
+        
+            .right {
+                left: 0%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 1rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="profile-image">GK</div>
+                <h1 class="header-title">Gunjan Kumar</h1>
+                <p class="header-subtitle">Senior Data Engineer (AWS Certified)</p>
+                <p>Building robust data pipelines and solutions in AWS & GCP</p>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <ul class="nav-links">
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I am a Senior Data Engineer with over 9 years of experience in designing, implementing, and optimizing data pipelines for enterprise-scale applications. My expertise spans across AWS and GCP cloud platforms, with a deep focus on building scalable data solutions using modern technologies like Apache Spark, Airflow, and various cloud-native services.</p>
+                    <p>I am passionate about building efficient data processing systems following best practices and test-driven development. My experience includes working with both batch and streaming applications, cloud deployment automation, and driving proof of concepts for new technologies.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">9+</div>
+                        <div>Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">4</div>
+                        <div>Companies</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">15+</div>
+                        <div>Projects</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h3>Cloud Platforms</h3>
+                    <ul class="skills-list">
+                        <li>AWS (EMR, Glue, S3, RDS, SQS, Kinesis)</li>
+                        <li>Google Cloud Platform (GCP)</li>
+                        <li>Azure (Databricks, Stream Analytics, Data Lake)</li>
+                        <li>Infrastructure as Code (Terraform, CloudFormation)</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h3>Big Data Technologies</h3>
+                    <ul class="skills-list">
+                        <li>Apache Spark (PySpark, Spark Streaming)</li>
+                        <li>Apache Airflow</li>
+                        <li>Kafka</li>
+                        <li>Hadoop Ecosystem (Hive, HDFS, YARN)</li>
+                        <li>Databricks</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h3>Databases</h3>
+                    <ul class="skills-list">
+                        <li>BigQuery</li>
+                        <li>Snowflake</li>
+                        <li>Hive</li>
+                        <li>HBase</li>
+                        <li>Neo4j Graph Database</li>
+                        <li>PostgreSQL, MySQL, Oracle</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h3>Languages & Tools</h3>
+                    <ul class="skills-list">
+                        <li>Python</li>
+                        <li>Scala</li>
+                        <li>Java</li>
+                        <li>SQL & PL/SQL</li>
+                        <li>Shell Scripting</li>
+                        <li>CI/CD (Jenkins, Git Actions)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">May 2022 - Present</div>
+                        <h3 class="timeline-title">Senior Data Engineer</h3>
+                        <div class="timeline-company">Samsung R&D Institute, Bangalore</div>
+                        <ul>
+                            <li>Migration of data pipelines from AWS to GCP</li>
+                            <li>Implementing CI/CD pipelines using Jenkins/Git Actions</li>
+                            <li>Writing unit and integration test cases for TDD development</li>
+                            <li>Scheduling Dataproc/EMR jobs using Airflow</li>
+                            <li>Developing Data Quality Dashboards in Superset/Grafana</li>
+                            <li>Optimizing Spark jobs for BigQuery</li>
+                            <li>Cost optimization for BigQuery implementations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Aug 2020 - May 2022</div>
+                        <h3 class="timeline-title">Senior Data Engineer</h3>
+                        <div class="timeline-company">Happiest Minds Technologies, Bangalore</div>
+                        <ul>
+                            <li>Developing features using PySpark for Databricks</li>
+                            <li>Airflow DAG development for pipeline scheduling</li>
+                            <li>PySpark package development and deployment</li>
+                            <li>Development of complex CI/CD pipelines and automated code reviews</li>
+                            <li>Creating alerting and monitoring dashboards</li>
+                            <li>Implementing data pipelines with Snowflake</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Nov 2018 - Aug 2020</div>
+                        <h3 class="timeline-title">Senior Project Engineer</h3>
+                        <div class="timeline-company">Wipro Technologies, Pune</div>
+                        <ul>
+                            <li>Developing custom Kafka Producer for 29 data sources in Java</li>
+                            <li>Building stream and batch pipelines using Lambda Architecture</li>
+                            <li>Working with Azure Databricks and Spark Streaming</li>
+                            <li>Providing RCA for legacy applications</li>
+                            <li>Showcasing POC in GCP Cloud Dataflow using Python API</li>
+                            <li>Azure Infrastructure Automation using Terraform</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Dec 2014 - Oct 2018</div>
+                        <h3 class="timeline-title">Senior System Engineer</h3>
+                        <div class="timeline-company">Infosys Ltd., Pune</div>
+                        <ul>
+                            <li>Building streaming applications using Spark Streaming</li>
+                            <li>Developing Spark applications for structured and unstructured data</li>
+                            <li>Creating data pipelines with Hive, SQOOP, and Flume</li>
+                            <li>Working with AWS services (EMR, EC2, RDS, SQS, Kinesis)</li>
+                            <li>Building ETL workflows for large datasets (13+ TB)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Key Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Automated Personalized Engine</h3>
+                        <div class="project-client">Samsung USA</div>
+                        <p>Targeting Samsung customers by creating different ML models. Developed data pipelines for ingesting 2000+ features into Sagemaker Feature Store. Created 7 data pipelines using Spark and Dataproc, with jobs scheduled in Airflow.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PySpark</span>
+                            <span class="tech-tag">GCP</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Dataproc</span>
+                            <span class="tech-tag">EMR</span>
+                            <span class="tech-tag">Airflow</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Audience & Campaign Insights</h3>
+                        <div class="project-client">Healthgrades</div>
+                        <p>Created data pipelines for a US company that provides information about physicians, hospitals, and healthcare providers. Developed features in PySpark for Databricks and built monitoring systems.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PySpark</span>
+                            <span class="tech-tag">Databricks</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Jenkins</span>
+                            <span class="tech-tag">Airflow</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Enterprise Customer Risk Rating</h3>
+                        <div class="project-client">TD Bank</div>
+                        <p>Anti-Money Laundering project to build stream and batch pipelines using Lambda Architecture to identify high-risk customers and their behavior. Developed custom Kafka Producers for 29 data sources.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Kafka</span>
+                            <span class="tech-tag">Azure Databricks</span>
+                            <span class="tech-tag">Spark Streaming</span>
+                            <span class="tech-tag">Hive</span>
+                            <span class="tech-tag">Terraform</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Customer Behavior Analysis</h3>
+                        <div class="project-client">Nordstrom</div>
+                        <p>Built streaming applications using Spark Streaming with data acquisition tools like Flume and Kafka. Streamed data was visualized in a web application. Created RDDs and dataframes in Spark Core.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Spark</span>
+                            <span class="tech-tag">Kafka</span>
+                            <span class="tech-tag">AWS EMR</span>
+                            <span class="tech-tag">AWS Glue</span>
+                            <span class="tech-tag">SQS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <h2>Certifications & Achievements</h2>
+            <div class="certifications-list">
+                <div class="certification-item">
+                    <h3>AWS Certified Data Engineer</h3>
+                    <p>Amazon Web Services</p>
+                </div>
+                <div class="certification-item">
+                    <h3>Neo4j Certified Professional</h3>
+                    <p>Neo Technology</p>
+                </div>
+                <div class="certification-item">
+                    <h3>Az-900 Microsoft Azure Fundamentals</h3>
+                    <p>Microsoft</p>
+                </div>
+                <div class="certification-item">
+                    <h3>Sun Certified in JAVA SE6</h3>
+                    <p>NIIT and Oracle</p>
+                </div>
+                <div class="certification-item">
+                    <h3>Hands On Snowflake - WebUI Essentials</h3>
+                    <p>Snowflake</p>
+                </div>
+                <div class="certification-item">
+                    <h3>Top 10k globally in Python</h3>
+                    <p>HackerRank</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <ul class="contact-list">
+                        <li>
+                            <div class="contact-icon">📱</div>
+                            <a href="tel:+918106660562">+91 8106660562</a>
+                        </li>
+                        <li>
+                            <div class="contact-icon">📧</div>
+                            <a href="mailto:Kumar.gunjan@outlook.in">Kumar.gunjan@outlook.in</a>
+                        </li>
+                        <li>
+                            <div class="contact-icon">🌐</div>
+                            <a href="https://www.linkedin.com/in/gunjan075/" target="_blank">linkedin.com/in/gunjan075</a>
+                        </li>
+                        <li>
+                            <div class="contact-icon">📍</div>
+                            <p>Bengaluru, India</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/gunjan075/" class="social-icon" target="_blank">in</a>
+                <a href="#" class="social-icon">G</a>
+                <a href="#" class="social-icon">T</a>
+            </div>
+            <p>&copy; 2025 Gunjan Kumar. All Rights Reserved.</p>
+        </div>
+    </footer>
