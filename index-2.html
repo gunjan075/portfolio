@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gunjan Kumar | Senior Data Engineer</title>
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #334e68;
+            --accent-color: #48bb78;
+            --light-color: #f8f9fa;
+            --dark-color: #2d3748;
+            --text-color: #333;
+            --light-text: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin-bottom: 1rem;
+            object-fit: cover;
+            background-color: var(--light-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin: 0 auto 1rem;
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        nav li {
+            padding: 1rem;
+        }
+        
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        section:nth-child(even) {
+            background-color: #f0f4f8;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .lead {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--light-text);
+            margin-bottom: 1rem;
+        }
+        
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-category h3 {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .skill-list li::before {
+            content: '✓';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid var(--accent-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .company-name {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            gap: 0.5rem;
+        }
+        
+        .tech-tag {
+            background-color: #e2e8f0;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--dark-color);
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .contact-info {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .contact-method {
+            text-align: center;
+            min-width: 200px;
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-link {
+            color: var(--light-text);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .download-resume {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .download-resume:hover {
+            background-color: #3da066;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left::after, .right::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                padding: 0.5rem;
+            }
+            
+            .skills, .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="profile-pic">GK</div>
+            <h1>Gunjan Kumar</h1>
+            <p class="subtitle">Senior Data Engineer (AWS Certified)</p>
+            <p><i class="fas fa-map-marker-alt"></i> Bengaluru, India | <i class="fas fa-phone"></i> +91 8106660562 | <i class="fas fa-envelope"></i> Kumar.gunjan@outlook.in</p>
+            <a href="https://github.com/yourusername/resume/raw/main/Gunjan_Kumar-DataEngineer_SAMSUNG22aug.pdf" class="download-resume"><i class="fas fa-download"></i> Download Resume</a>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <section id="about">
+        <h2>About Me</h2>
+        <p class="lead">I'm a Senior Data Engineer with nearly 10 years of experience building robust data pipelines and scalable data solutions in cloud environments (AWS/GCP). I specialize in big data technologies, stream processing, and ETL workflows.</p>
+        
+        <p>Throughout my career, I've worked with diverse industries and technologies, from financial services anti-money laundering systems to retail customer behavior analytics. I'm passionate about optimizing data workflows, implementing CI/CD pipelines, and building data quality monitoring tools.</p>
+        
+        <p>I hold AWS certification as a Data Engineer and have expertise in data pipeline implementation, test-driven development, and cloud infrastructure automation. I enjoy solving complex data challenges and mentoring junior engineers.</p>
+    </section>
+    
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills">
+            <div class="skill-category">
+                <h3>Cloud Platforms</h3>
+                <ul class="skill-list">
+                    <li>AWS (EMR, Glue, S3, RDS, SQS, Kinesis)</li>
+                    <li>GCP (BigQuery, Dataproc, Composer)</li>
+                    <li>Azure (Databricks, Cosmos DB, SQL DW)</li>
+                    <li>Terraform & CloudFormation</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Big Data Technologies</h3>
+                <ul class="skill-list">
+                    <li>Apache Spark (PySpark, Spark Streaming)</li>
+                    <li>Apache Airflow</li>
+                    <li>Hadoop Ecosystem (HDFS, Hive, YARN)</li>
+                    <li>Kafka</li>
+                    <li>Databricks</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Databases</h3>
+                <ul class="skill-list">
+                    <li>BigQuery</li>
+                    <li>Snowflake</li>
+                    <li>Delta Lake</li>
+                    <li>Hive</li>
+                    <li>HBase</li>
+                    <li>Neo4j Graph Database</li>
+                    <li>MySQL, PostgreSQL, Oracle</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                <ul class="skill-list">
+                    <li>Python</li>
+                    <li>Scala</li>
+                    <li>Java</li>
+                    <li>SQL</li>
+                    <li>PL/SQL</li>
+                    <li>Shell Scripting</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>DevOps & Tools</h3>
+                <ul class="skill-list">
+                    <li>CI/CD (Jenkins, Git Actions)</li>
+                    <li>Docker</li>
+                    <li>Git/GitLab/Bitbucket</li>
+                    <li>Jira</li>
+                    <li>Maven & Nexus</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Visualization & Monitoring</h3>
+                <ul class="skill-list">
+                    <li>Superset</li>
+                    <li>Grafana</li>
+                    <li>Prometheus</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">May 2022 - Present</div>
+                    <h3>Senior Data Engineer</h3>
+                    <div class="company-name">Samsung R&D Institute, Bangalore</div>
+                    <p>Working on data pipeline implementation end-to-end in GCP/AWS for personalized targeting engines.</p>
+                    <ul>
+                        <li>Migrated data pipelines from AWS to GCP</li>
+                        <li>Implemented CI/CD pipelines using Git Actions</li>
+                        <li>Developed data quality dashboards and monitoring tools</li>
+                        <li>Optimized Spark jobs and BigQuery implementations</li>
+                        <li>Mentored junior engineers on best practices</li>
+                    </ul>
+                    <div class="tech-list">
+                        <span class="tech-tag">PySpark</span>
+                        <span class="tech-tag">Airflow</span>
+                        <span class="tech-tag">BigQuery</span>
+                        <span class="tech-tag">Dataproc</span>
+                        <span class="tech-tag">EMR</span>
+                        <span class="tech-tag">Terraform</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">Aug 2020 - May 2022</div>
+                    <h3>Senior Data Engineer</h3>
+                    <div class="company-name">Happiest Minds Technologies, Bangalore</div>
+                    <p>Individual contributor developing features for Healthgrades audience and campaign insights.</p>
+                    <ul>
+                        <li>Developed PySpark packages for Databricks</li>
+                        <li>Created Airflow DAGs for pipeline scheduling</li>
+                        <li>Built monitoring dashboards with Superset</li>
+                        <li>Implemented complex CI/CD pipelines with Jenkins</li>
+                        <li>Worked with Snowflake for data storage</li>
+                    </ul>
+                    <div class="tech-list">
+                        <span class="tech-tag">PySpark</span>
+                        <span class="tech-tag">Databricks</span>
+                        <span class="tech-tag">Airflow</span>
+                        <span class="tech-tag">Snowflake</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Jenkins</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">Nov 2018 - Aug 2020</div>
+                    <h3>Senior Project Engineer</h3>
+                    <div class="company-name">Wipro Technologies, Pune</div>
+                    <p>Data pipeline development and issue resolution for TD Bank's anti-money laundering project.</p>
+                    <ul>
+                        <li>Developed custom Kafka producers for 29 data sources</li>
+                        <li>Created stream transformations with Azure Databricks</li>
+                        <li>Provided RCA for legacy MapReduce applications</li>
+                        <li>Automated Azure infrastructure with Terraform</li>
+                    </ul>
+                    <div class="tech-list">
+                        <span class="tech-tag">Kafka</span>
+                        <span class="tech-tag">Azure Databricks</span>
+                        <span class="tech-tag">Spark Streaming</span>
+                        <span class="tech-tag">Hive</span>
+                        <span class="tech-tag">Terraform</span>
+                        <span class="tech-tag">Azure DevOps</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">Dec 2014 - Oct 2018</div>
+                    <h3>Senior System Engineer</h3>
+                    <div class="company-name">Infosys Ltd., Pune</div>
+                    <p>Development of HQL scripts and AWS resource management for NordStrom.</p>
+                    <ul>
+                        <li>Built streaming applications with Spark Streaming</li>
+                        <li>Created data ingestion pipelines from logs to HDFS</li>
+                        <li>Implemented incremental data loads with SQOOP</li>
+                        <li>Developed SQS applications for failure notifications</li>
+                    </ul>
+                    <div class="tech-list">
+                        <span class="tech-tag">Spark</span>
+                        <span class="tech-tag">Hive</span>
+                        <span class="tech-tag">AWS EMR</span>
+                        <span class="tech-tag">AWS Glue</span>
+                        <span class="tech-tag">SQS</span>
+                        <span class="tech-tag">Kafka</span>
+                        <span class="tech-tag">SQOOP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects">
+        <h2>Key Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Automated Personalized Engine</h3>
+                    <div class="company-name">Samsung USA</div>
+                    <p>Built data pipelines for ingesting 2000+ features into Sagemaker Feature Store, targeting Samsung customers with ML models.</p>
+                    <ul>
+                        <li>Developed 7 data pipelines using Spark and Dataproc</li>
+                        <li>Scheduled jobs with Airflow</li>
+                        <li>Migrated pipelines from AWS to GCP</li>
+                        <li>Implemented TDD practices for new features</li>
+                    </ul>
+                    <div class="tech-list">
+                        <span class="tech-tag">PySpark</span>
+                        <span class="tech-tag">GCP</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Airflow</span>
+                        <span class="tech-tag">Dataproc</span>
+                        <span class="tech-tag">EMR</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Audience & Campaign Insights</h3>
+                    <div class="company-name">Healthgrades</div>
+                    <p>Developed insights platform for a US company providing information about physicians, hospitals, and healthcare providers.</p>
+                    <ul>
+                        <li>Created PySpark packages for Databricks</li>
+                        <li>Developed Airflow DAGs for scheduling</li>
+                        <li>Built monitoring dashboards in Superset</li>
+                        <li>Implemented CI/CD pipelines with Jenkins</li>
+                    </ul>
+                    <div class="tech-list">
+                        <span class="tech-tag">PySpark</span>
+                        <span class="tech-tag">Databricks</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Airflow</span>
+                        <span class="tech-tag">Snowflake</span>
+                        <span class="tech-tag">Jenkins</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Enterprise Customer Risk Rating</h3>
+                    <div class="company-name">TD Bank</div>
+                    <p>Built stream and batch pipelines using Lambda Architecture to identify high-risk customers for anti-money laundering.</p>
+                    <ul>
+                        <li>Developed custom Kafka producers for 29 data sources</li>
+                        <li>Created stream transformations with Azure Databricks</li>
+                        <li>Enhanced legacy MapReduce applications</li>
+                        <li>Automated Azure infrastructure with Terraform</li>
+                    </ul>
+                    <div class="tech-list">
+                        <span class="tech-tag">Kafka</span>
+                        <span class="tech-tag">Azure Databricks</span>
+                        <span class="tech-tag">Spark Streaming</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Terraform</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Customer Behavior Analytics</h3>
+                    <div class="company-name">NordStrom</div>
+                    <p>Built streaming application for processing and visualizing customer behavior data from server logs.</p>
+                    <ul>
+                        <li>Created direct streams from Kafka to Spark Streaming</li>
+                        <li>Performed windowed operations on streaming data</li>
+                        <li>Optimized RDD storage with compression methods</li>
+                        <li>Developed notification system for job failures</li>
+                    </ul>
+                    <div class="tech-list">
+                        <span class="tech-tag">Spark Streaming</span>
+                        <span class="tech-tag">Kafka</span>
+                        <span class="tech-tag">AWS EMR</span>
+                        <span class="tech-tag">AWS Glue</span>
+                        <span class="tech-tag">SQS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-form">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+        
+        <div class="contact-info">
+            <div class="contact-method">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <h3>Email</h3>
+                <p>Kumar.gunjan@outlook.in</p>
+            </div>
+            
+            <div class="contact-method">
+                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                <h3>Phone</h3>
+                <p>+91 8106660562</p>
+            </div>
+            
+            <div class="contact-method">
+                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <h3>Location</h3>
+                <p>Bengaluru, India</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/gunjan075/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/yourusername" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>&copy; 2025 Gunjan Kumar. All Rights Reserved.</p>
+        <a href="https://github.com/yourusername/resume/raw/main/Gunjan_Kumar-DataEngineer_SAMSUNG22aug.pdf" class="download-resume"><i class="fas fa-download"></i> Download Resume</a>
+    </footer>
+</body>
+</html>
